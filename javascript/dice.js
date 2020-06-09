@@ -1,5 +1,12 @@
+window.onload = function () {
+    var newGameBtn = document.getElementById("new_game");
+    newGameBtn.onclick = createNewGame;
+    document.getElementById("roll").onclick = rollDie;
+    document.getElementById("hold").onclick = holdDie;
+};
 function generateRandomValue(minValue, maxValue) {
     var random = Math.random();
+    random = Math.floor(Math.random() * ((maxValue - minValue) + minValue));
     return random;
 }
 function changePlayers() {
@@ -7,12 +14,6 @@ function changePlayers() {
     var player1Name = document.getElementById("player1").value;
     var player2Name = document.getElementById("player2").value;
 }
-window.onload = function () {
-    var newGameBtn = document.getElementById("new_game");
-    newGameBtn.onclick = createNewGame;
-    document.getElementById("roll").onclick = rollDie;
-    document.getElementById("hold").onclick = holdDie;
-};
 function createNewGame() {
     document.getElementById("turn").classList.add("open");
     document.getElementById("total").value = "0";

@@ -1,8 +1,22 @@
+window.onload = function(){
+    let newGameBtn = document.getElementById("new_game");
+    newGameBtn.onclick = createNewGame;
+
+    document.getElementById("roll").onclick = rollDie;
+
+    document.getElementById("hold").onclick = holdDie;
+}
+
+/**
+ * Returns a random number between minValue and maxValue
+ * @param minValue is inclusive
+ * @param maxValue is exclusive
+ */
 function generateRandomValue(minValue:number, maxValue:number):number{
     var random = Math.random();
     
     //TODO: use random to generate a number between min and max
-
+    random = Math.floor( Math.random() * ( (maxValue - minValue) + minValue ) );
     return random;
 }
 
@@ -16,14 +30,6 @@ function changePlayers():void{
     //set currentPlayerName to the next player
 }
 
-window.onload = function(){
-    let newGameBtn = document.getElementById("new_game");
-    newGameBtn.onclick = createNewGame;
-
-    document.getElementById("roll").onclick = rollDie;
-
-    document.getElementById("hold").onclick = holdDie;
-}
 
 function createNewGame(){
     //set player 1 and player 2 scores to 0
