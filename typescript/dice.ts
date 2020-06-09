@@ -32,10 +32,17 @@ function changePlayers():void{
 
 
 function createNewGame(){
+    // alert("you have started the game"); <-- button works
+
     //set player 1 and player 2 scores to 0
+    let scoreOne = 0;
+    let scoreTwo = 0;
 
     //verify each player has a name
     //if both players don't have a name display error
+    if ( !isTextPresent("player1") || !isTextPresent("player2") ){
+        alert("Please input a name in both textboxes.");
+    } else { // rest of method only runs when text is present in both boxes
 
     //if both players do have a name start the game!
     document.getElementById("turn").classList.add("open");
@@ -44,6 +51,8 @@ function createNewGame(){
     document.getElementById("player1").setAttribute("disabled", "disabled");
     document.getElementById("player2").setAttribute("disabled", "disabled");
     changePlayers();
+
+    }
 }
 
 function rollDie():void{
@@ -71,4 +80,17 @@ function holdDie():void{
 
     //change players
     changePlayers();
+}
+
+/**
+ * Returns true if the passed-in textbox has text
+ * @param id The id of the textbox
+ */
+function isTextPresent(id:string):boolean {
+    let textBox = <HTMLInputElement>document.getElementById(id);
+    let textBoxValue = textBox.value;
+    if (textBoxValue.trim() == "") {
+        return false;
+    }
+    return true;
 }
