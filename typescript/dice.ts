@@ -20,14 +20,24 @@ function generateRandomValue(minValue:number, maxValue:number):number{
     return random;
 }
 
-
+/**
+ * Changes the current player displayed 
+ */
 function changePlayers():void{
+    console.log("Time to switch players");
     let currentPlayerName = document.getElementById("current").innerText;
     let player1Name = (<HTMLInputElement>document.getElementById("player1")).value;
     let player2Name = (<HTMLInputElement>document.getElementById("player2")).value;
 
     //swap from player to player by comparing current name to player names
     //set currentPlayerName to the next player
+
+    if (currentPlayerName != player1Name){
+        document.getElementById("current").innerText = player1Name;
+    } else {
+        document.getElementById("current").innerText = player2Name;
+    }
+
 }
 
 
@@ -44,13 +54,13 @@ function createNewGame(){
         alert("Please input a name in both textboxes.");
     } else { // rest of method only runs when text is present in both boxes
 
-    //if both players do have a name start the game!
-    document.getElementById("turn").classList.add("open");
-    (<HTMLInputElement>document.getElementById("total")).value = "0";
-    //lock in player names and then change players
-    document.getElementById("player1").setAttribute("disabled", "disabled");
-    document.getElementById("player2").setAttribute("disabled", "disabled");
-    changePlayers();
+        //if both players do have a name start the game!
+        document.getElementById("turn").classList.add("open");
+        (<HTMLInputElement>document.getElementById("total")).value = "0";
+        //lock in player names and then change players
+        document.getElementById("player1").setAttribute("disabled", "disabled");
+        document.getElementById("player2").setAttribute("disabled", "disabled");
+        changePlayers();
 
     }
 }

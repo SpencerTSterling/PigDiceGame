@@ -10,9 +10,16 @@ function generateRandomValue(minValue, maxValue) {
     return random;
 }
 function changePlayers() {
+    console.log("Time to switch players");
     var currentPlayerName = document.getElementById("current").innerText;
     var player1Name = document.getElementById("player1").value;
     var player2Name = document.getElementById("player2").value;
+    if (currentPlayerName != player1Name) {
+        document.getElementById("current").innerText = player1Name;
+    }
+    else {
+        document.getElementById("current").innerText = player2Name;
+    }
 }
 function createNewGame() {
     var scoreOne = 0;
